@@ -3,7 +3,7 @@ import items from '../data/items.json';
 import _ from 'lodash';
 import mongoose from 'mongoose';
 
-const DB_URL = 'mongodb://localhost:27017/node_database';
+const DB_URL = 'mongodb://localhost:27018/node_database';
 const DB_USER = '';
 const DB_PASSWORD = '';
 
