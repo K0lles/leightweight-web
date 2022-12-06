@@ -3,7 +3,7 @@ import items from '../data/items.json';
 import _ from 'lodash';
 import mongoose from 'mongoose';
 
-const DB_URL = 'mongodb://localhost:27018/node_database';
+const DB_URL = 'mongodb://mongodb:27017/node_database';
 const DB_USER = '';
 const DB_PASSWORD = '';
 
@@ -26,10 +26,13 @@ const SimpleItemSchema = mongoose.Schema({
 const SimpleItemModel = mongoose.model('SimpleItem', SimpleItemSchema);
 
 router.get('/', (req, res) => {
-    SimpleItemModel.find((error, res) => {
+    SimpleItemModel.find((error, itemsDB) => {
         if (error) {
             res.status(500).send(error);
             return handleError(error);
+        }
+        if (itemsDB) {
+            res.json(itemsDB);
         }
     })
     res.json(items);
